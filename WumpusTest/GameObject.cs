@@ -36,10 +36,7 @@ namespace Wumpus
             if (nextRoom != 0)
             {
                 _Player.AddGold(1);
-            }
-            else
-            {
-                // can't move that way
+                _Map.MovePlayerTo(nextRoom);
             }
         }
 
@@ -51,6 +48,11 @@ namespace Wumpus
             State = "Playing";
         }
 
+        public void EndGame()
+        {
+            State = "Ended";
+        }
+
         public void SeeHighScores()
         {
             State = "Viewing High Scores";
@@ -59,11 +61,6 @@ namespace Wumpus
         public void FinishArrowTrivia()
         {
             _Player.AddArrows(5);
-        }
-
-        public void EndGame()
-        {
-            State = "Ended";
         }
 
         public void StartTrivia(int questionsTotal, int questionsNecessary, string result)

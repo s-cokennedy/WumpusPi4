@@ -32,5 +32,11 @@ namespace Wumpus
             //TODO
             return 1;
         }
+
+        public void MovePlayerTo(int newLocation)
+        {
+            // move player to the new location
+            // needs to check for hazards, too
+        }
     }
 }
