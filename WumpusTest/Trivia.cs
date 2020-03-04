@@ -11,6 +11,10 @@ namespace Wumpus
         private GameObject _GameObject;
 
         private int currentId;
+        private int questionsTotal;
+        private int questionsCorrect;
+        private int questionsNecessary;
+        private int questionsDone;
 
         public Trivia(GameObject gameObject)
         {
@@ -20,6 +24,26 @@ namespace Wumpus
         public void ReadQuestionsFromFile()
         {
 
+        }
+
+        public void StartTrivia(int questionsTotal, int questionsNecessary)
+        {
+            this.questionsTotal = questionsTotal;
+            this.questionsNecessary = questionsNecessary;
+            questionsCorrect = 0;
+            questionsDone = 0;
+
+            _GameObject.ShowNewQuestion();
+        }
+
+        public void AnswerTrivia(bool correct)
+        {
+            // needs to:
+            // - add 1 to correct
+            // - add 1 to done
+            // - check if finished all questions
+            // - if so, call end trivia
+            // - else, show new question
         }
 
         // how I think questions will work:

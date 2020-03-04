@@ -15,6 +15,7 @@ namespace Wumpus
         private UserInterface _UI;
 
         private string State;
+        private string TriviaResult;
 
         public GameObject()
         {
@@ -24,6 +25,8 @@ namespace Wumpus
             _Trivia = new Trivia(this);
             _UI = new UserInterface(this);
             State = "Not Started";
+
+            _Trivia.ReadQuestionsFromFile();
         }
 
         public void MoveForward(int direction)
@@ -53,14 +56,9 @@ namespace Wumpus
             State = "Viewing High Scores";
         }
 
-        public void BuyArrows()
+        public void FinishArrowTrivia()
         {
-            //TODO: ask trivia for questions and display them
-            bool success = true;
-            if (success)
-            {
-                _Player.AddArrows(5);
-            }
+            _Player.AddArrows(5);
         }
 
         public void EndGame()
@@ -68,14 +66,23 @@ namespace Wumpus
             State = "Ended";
         }
 
-        public void StartTrivia()
+        public void StartTrivia(int questionsTotal, int questionsNecessary, string result)
         {
             State = "Trivia";
-            ShowNewQuestion();
+            TriviaResult = result;
+            _Trivia.StartTrivia(questionsTotal, questionsNecessary);
         }
 
-        public void EndTrivia()
+        public void EndTrivia(bool success)
         {
+            if (success)
+            {
+                if (TriviaResult.Equals("arrows"))
+                {
+                    FinishArrowTrivia();
+                }
+                // do other stuff
+            }
             State = "Playing";
         }
 
@@ -96,11 +103,11 @@ namespace Wumpus
 
             if (answer.Equals(correctAnswer))
             {
-                // do stuff
+                _Trivia.AnswerTrivia(true);
             }
             else
             {
-                // do other stuff
+                _Trivia.AnswerTrivia(false);
             }
         }
 
