@@ -9,16 +9,18 @@ namespace Wumpus
     class Player
     {
         // Instance Variables
+        private GameObject _GameObject;
         private int NumberofTriviaQuestionsCorrect;
         private int Number_of_minigames_Won;
 
         private int amountOfGold;
         // Constructors
-        public Player()
+        public Player(GameObject gameObject)
         {
             NumberofTriviaQuestionsCorrect = 0;
             Number_of_minigames_Won = 0;
             amountOfGold = 0;
+            _GameObject = gameObject;
         }
         //Accesors
         public int[] GetInventory()

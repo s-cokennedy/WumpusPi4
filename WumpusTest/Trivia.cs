@@ -8,12 +8,13 @@ namespace Wumpus
 {
     class Trivia
     {
-        
+        private GameObject _GameObject;
+
         private int currentId;
 
-        public Trivia()
+        public Trivia(GameObject gameObject)
         {
-
+            _GameObject = gameObject;
         }
 
         public void ReadQuestionsFromFile()

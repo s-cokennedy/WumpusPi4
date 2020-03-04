@@ -18,9 +18,11 @@ namespace Wumpus
 
         public GameObject()
         {
-            _Cave = new Cave();
-            _Map = new Map();
-            _Player = new Player();
+            _Cave = new Cave(this);
+            _Map = new Map(this);
+            _Player = new Player(this);
+            _Trivia = new Trivia(this);
+            _UI = new UserInterface(this);
             State = "Not Started";
         }
 

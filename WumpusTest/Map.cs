@@ -11,10 +11,12 @@ namespace Wumpus
         //instance Variables
         private int WhichRoom;
         private Random gen;
+        private GameObject _GameObject;
         //Constructor
-        public Map() {
+        public Map(GameObject gameObject) {
             WhichRoom = NewRandomRoom();
             gen = new Random();
+            _GameObject = gameObject;
         }
         //Accessors
         public int GetRoom() {

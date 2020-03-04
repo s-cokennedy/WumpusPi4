@@ -8,13 +8,15 @@ namespace Wumpus
 {
     class Cave
     {
+        private GameObject _GameObject;
+
         private int[] adjacents1 = { 25, 26, 2, 7, 6, 30 };
 
         private int[] paths1 = { 25, 0, 0, 7, 6, 0};
 
-        public Cave()
+        public Cave(GameObject gameObject)
         {
-            
+            _GameObject = gameObject;
         }
 
         public int[] GetAdjacent(int room)

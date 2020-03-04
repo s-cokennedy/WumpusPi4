@@ -8,9 +8,11 @@ namespace Wumpus
 {
     class UserInterface
     {
-        public UserInterface()
-        {
+        private GameObject _GameObject;
 
+        public UserInterface(GameObject gameObject)
+        {
+            _GameObject = gameObject;
         }
 
         public void DisplayTrivia(string question, string[] answers)
