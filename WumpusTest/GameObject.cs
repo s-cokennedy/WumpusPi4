@@ -11,8 +11,10 @@ namespace Wumpus
         private Map _Map;
         private Cave _Cave;
         private Player _Player;
+        private Trivia _Trivia;
+        private UserInterface _UI;
 
-        private String State;
+        private string State;
 
         public GameObject()
         {
@@ -67,6 +69,7 @@ namespace Wumpus
         public void StartTrivia()
         {
             State = "Trivia";
+            ShowNewQuestion();
         }
 
         public void EndTrivia()
@@ -74,9 +77,29 @@ namespace Wumpus
             State = "Playing";
         }
 
-        public void AnswerTrivia()
+        public void ShowNewQuestion()
+        {
+            int questionId = _Trivia.GetRandomId();
+            string question = _Trivia.GetQuestion(questionId);
+            string[] answers = _Trivia.GetAnswers(questionId);
+            _UI.DisplayTrivia(question, answers);
+            _Trivia.SetCurrentId(questionId);
+        }
+
+        public void AnswerTrivia(string answer)
         {
             _Player.RemoveGold(1);
+            int currentId = _Trivia.GetCurrentId();
+            string correctAnswer = _Trivia.GetCorrectAnswer(currentId);
+
+            if (answer.Equals(correctAnswer))
+            {
+                // do stuff
+            }
+            else
+            {
+                // do other stuff
+            }
         }
 
     }

@@ -8,6 +8,14 @@ namespace Wumpus
 {
     class UserInterface
     {
+        public UserInterface()
+        {
 
+        }
+
+        public void DisplayTrivia(string question, string[] answers)
+        {
+
+        }
     }
 }
